@@ -20,11 +20,7 @@
 		<platform-site>http://download.eclipse.org/eclipse/updates/${platform-version}</platform-site>
 		<tm-version>3.3</tm-version>
 		<tm-site>http://download.eclipse.org/tm/updates/${tm-version}</tm-site>
-		<cdt-site>https://hudson.eclipse.org/hudson/job/cdt-maint/ws/releng/org.eclipse.cdt.repo/target/repository/</cdt-site>
-		<tcf-site>https://hudson.eclipse.org/hudson/job/tcf-maint/ws/features/org.eclipse.tm.tcf.repo/target/repository/</tcf-site>
-		<cdt-edc-site>https://hudson.eclipse.org/hudson/job/cdt-edc-maint/ws/org.eclipse.cdt.debug.edc.repo/target/repository/</cdt-edc-site>
-		<cdt-stream>indigo</cdt-stream>
-		<cdt-install>/home/data/httpd/download.eclipse.org/tools/cdt/builds/${cdt-stream}/nightly</cdt-install>
+		<cdt-site>http://download.eclipse.org/tools/cdt/builds/indigo/nightly</cdt-site>
 	</properties>
 
 	<repositories>
@@ -41,16 +37,6 @@
 		<repository>
 			<id>cdt</id>
 			<url>${cdt-site}</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>tcf</id>
-			<url>${tcf-site}</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>cdt-edc</id>
-			<url>${cdt-edc-site}</url>
 			<layout>p2</layout>
 		</repository>
 	</repositories>
@@ -137,6 +123,30 @@
 						<id>attach-source</id>
 						<goals>
 							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.dash.maven</groupId>
+				<artifactId>eclipse-maven-signing-plugin</artifactId>
+				<version>1.0.1</version>
+				<executions>
+					<execution>
+						<id>repack</id>
+						<configuration>
+							<inputFile>${project.build.directory}/eclipse-indigo.zip</inputFile>
+						</configuration>
+						<phase>package</phase>
+						<goals>
+							<goal>pack</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>fixCheckSums</id>
+						<phase>package</phase>
+						<goals>
+							<goal>fixCheckSums</goal>
 						</goals>
 					</execution>
 				</executions>
