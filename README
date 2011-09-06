@@ -1,0 +1,12 @@
+This is an example project showing how an Aggregrator could be done
+using the Tycho eclipse-repository project type.
+
+Prequisetes:
+
+1. Apache Maven 3.0
+2. Active Internet connection
+
+To run this build:
+
+mvn clean install
+
