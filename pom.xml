@@ -44,6 +44,22 @@
 			<url>${cdt-site}</url>
 			<layout>p2</layout>
 		</repository>
+                <repository>
+                    <id>eclipse-maven</id>
+                    <name>Eclipse Maven Repository</name>
+                    <releases>
+                         <enabled>true</enabled>
+                         <updatePolicy>always</updatePolicy>
+                         <checksumPolicy>fail</checksumPolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                        <checksumPolicy>fail</checksumPolicy>
+                    </snapshots>
+                    <url>http://maven.eclipse.org/nexus/content/groups/public/</url>
+                    <layout>default</layout>
+                </repository>
 	</repositories>
 
 	<licenses>
